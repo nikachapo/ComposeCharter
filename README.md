@@ -54,7 +54,10 @@ data class ChartModel(val value: Float, val color: Color, val text: String? = nu
 #### PieChart
 ```kotlin
 PieChart(
-    chartModels = chartModels,
+    chartModels = listOf(
+                ChartModel(cyanAnimatedPercentageState.value, Color.Cyan),
+                ChartModel(greenAnimatedPercentageState.value, Color.Green),
+                ChartModel(yellowAnimatedPercentageState.value, Color.Yellow)),
     chartSize = 150.dp,
     elevation = 30.dp,
     showCenterDot = true
