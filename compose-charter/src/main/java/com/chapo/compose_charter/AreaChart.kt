@@ -15,10 +15,10 @@ import android.graphics.Path as AndroidPath
 fun AreaChart(
     yAxisValues: List<Float>,
     modifier: Modifier = Modifier,
-    spacing: Float = 100f,
     lineWidth: Float = 4f,
-    fillColor: Color? = MaterialTheme.colors.primary,
-    graphColor: Color = MaterialTheme.colors.primary
+    spacing: Float = 100f,
+    lineColor: Color = MaterialTheme.colors.primary,
+    fillColor: Color? = MaterialTheme.colors.primary
 ) {
 
     val transparentGraphColor = remember {
@@ -76,7 +76,7 @@ fun AreaChart(
         )
         drawPath(
             path = strokePath,
-            color = graphColor,
+            color = lineColor,
             style = Stroke(
                 width = lineWidth.dp.toPx(),
                 cap = StrokeCap.Round

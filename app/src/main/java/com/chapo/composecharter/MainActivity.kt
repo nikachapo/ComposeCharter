@@ -10,7 +10,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import com.chapo.compose_charter.*
@@ -62,11 +61,9 @@ fun DrawChart(type: ChartType, list: List<ChartModel>) {
                 yAxisValues = list.map { it.value },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp),
-                spacing = 50f,
-                lineWidth = 2f,
-                fillColor = Color.Green,
-                graphColor = MaterialTheme.colors.primary
+                    .height(200.dp)
+                    .padding(24.dp),
+                lineWidth = 2f
             )
         }
         ChartType.Line -> {
@@ -77,8 +74,7 @@ fun DrawChart(type: ChartType, list: List<ChartModel>) {
                     .height(200.dp)
                     .padding(24.dp),
                 lineWidth = 2f,
-                shouldAnimate = true,
-                shouldDrawDots = true,
+                withDots = true,
                 lineColors = listOf(
                     MaterialTheme.colors.primary,
                     MaterialTheme.colors.error
