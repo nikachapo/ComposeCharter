@@ -17,7 +17,7 @@ allprojects {
 ### 2. Add the dependency to your module:
 ```gradle
 dependencies {
-    implementation 'com.github.nikachapo:ComposeCharter:1.0.2'
+    implementation 'com.github.nikachapo:ComposeCharter:1.0.3'
 }
 ```
 
