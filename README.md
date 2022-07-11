@@ -17,7 +17,7 @@ allprojects {
 ### 2. Add the dependency to your module:
 ```gradle
 dependencies {
-    implementation 'com.github.nikachapo:ComposeCharter:1.0.1'
+    implementation 'com.github.nikachapo:ComposeCharter:1.0.2'
 }
 ```
 
@@ -98,12 +98,13 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177401026
 
 #### BarChart
 ```kotlin
-BarChart(
-chartModels = chartModels,
-modifier = Modifier
-          .fillMaxWidth()
-          .padding(24.dp),
-height = 200.dp
+AreaChart(
+    yAxisValues = list.map { it.value },
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(200.dp)
+        .padding(24.dp),
+    lineWidth = 2f
 )
 ```
 
@@ -113,18 +114,17 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177401658
 #### LineChart
 ```kotlin
 LineChart(
-    yAxisValues = listOf(10f, 20f, 15f),
+    yAxisValues = list.map { it.value },
     modifier = Modifier
-               .fillMaxWidth()
-               .height(200.dp)
-               .padding(24.dp),
+        .fillMaxWidth()
+        .height(200.dp)
+        .padding(24.dp),
     lineWidth = 2f,
-    shouldAnimate = true,
-    shouldDrawDots = true,
+    withDots = true,
     lineColors = listOf(
-                 MaterialTheme.colors.primary,
-                 Color.Green
-                 )
+        MaterialTheme.colors.primary,
+        MaterialTheme.colors.error
+    )
 )
 ```
 
