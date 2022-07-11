@@ -8,11 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
+import android.graphics.Path as AndroidPath
 
 @Composable
 fun LineChart(
@@ -25,7 +24,8 @@ fun LineChart(
     lineColors: List<Color> = listOf(
         MaterialTheme.colors.primary,
         MaterialTheme.colors.primary
-    )
+    ),
+    fillColor: Color? = null
 ) {
 
     Box(
@@ -77,6 +77,26 @@ fun LineChart(
                 brush = Brush.linearGradient(lineColors),
                 style = Stroke(width = lineWidth.dp.toPx())
             )
+
+            if (fillColor != null) {
+                val fillPath = AndroidPath(path.asAndroidPath())
+                    .asComposePath()
+                    .apply {
+                        lineTo(lastX, size.height - spacing)
+                        lineTo(spacing, size.height - spacing)
+                        close()
+                    }
+                drawPath(
+                    path = fillPath,
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            fillColor.copy(alpha = 0.5f),
+                            Color.Transparent
+                        ),
+                        endY = size.height - spacing
+                    )
+                )
+            }
         }
     }
 }

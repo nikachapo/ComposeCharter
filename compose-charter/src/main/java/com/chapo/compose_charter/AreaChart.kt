@@ -17,13 +17,13 @@ fun AreaChart(
     modifier: Modifier = Modifier,
     lineWidth: Float = 4f,
     spacing: Float = 100f,
-    lineColor: Color = MaterialTheme.colors.primary,
-    fillColor: Color? = MaterialTheme.colors.primary
+    lineColors: List<Color> = listOf(
+        MaterialTheme.colors.primary,
+        MaterialTheme.colors.primary
+    ),
+    fillColor: Color? = null
 ) {
 
-    val transparentGraphColor = remember {
-        fillColor?.copy(alpha = 0.5f) ?: Color.Transparent
-    }
     val upperValue = remember(yAxisValues) {
         (yAxisValues.maxOfOrNull { it }?.plus(1))?.roundToInt() ?: 0
     }
@@ -57,26 +57,28 @@ fun AreaChart(
                 )
             }
         }
-        val fillPath = AndroidPath(strokePath.asAndroidPath())
-            .asComposePath()
-            .apply {
-                lineTo(lastX, size.height - spacing)
-                lineTo(spacing, size.height - spacing)
-                close()
-            }
-        drawPath(
-            path = fillPath,
-            brush = Brush.verticalGradient(
-                colors = listOf(
-                    transparentGraphColor,
-                    Color.Transparent
-                ),
-                endY = size.height - spacing
+        if (fillColor != null) {
+            val fillPath = AndroidPath(strokePath.asAndroidPath())
+                .asComposePath()
+                .apply {
+                    lineTo(lastX, size.height - spacing)
+                    lineTo(spacing, size.height - spacing)
+                    close()
+                }
+            drawPath(
+                path = fillPath,
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        fillColor.copy(0.5f),
+                        Color.Transparent
+                    ),
+                    endY = size.height - spacing
+                )
             )
-        )
+        }
         drawPath(
             path = strokePath,
-            color = lineColor,
+            brush = Brush.verticalGradient(lineColors),
             style = Stroke(
                 width = lineWidth.dp.toPx(),
                 cap = StrokeCap.Round

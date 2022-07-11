@@ -113,7 +113,7 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177401658
 #### LineChart
 ```kotlin
 LineChart(
-    yAxisValues = listOf(10f, 20f, 15f),
+    yAxisValues = list.map { it.value },
     modifier = Modifier
         .fillMaxWidth()
         .height(200.dp)
@@ -123,7 +123,8 @@ LineChart(
     lineColors = listOf(
         MaterialTheme.colors.primary,
         MaterialTheme.colors.error
-    )
+    ),
+    fillColor = Color.Green
 )
 ```
 
@@ -133,12 +134,17 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177402168
 #### AreaChart
 ```kotlin
 AreaChart(
-    yAxisValues = listOf(10f, 20f, 15f),
+    yAxisValues = list.map { it.value },
     modifier = Modifier
         .fillMaxWidth()
         .height(200.dp)
         .padding(24.dp),
-    lineWidth = 2f
+    lineWidth = 2f,
+    lineColors = listOf(
+        MaterialTheme.colors.primary,
+        MaterialTheme.colors.error
+    ),
+    fillColor = Color.Green
 )
 ```
 
