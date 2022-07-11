@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import com.chapo.compose_charter.*
 import com.chapo.composecharter.ui.theme.ComposeCharterTheme
@@ -64,12 +65,7 @@ fun DrawChart(type: ChartType, list: List<ChartModel>) {
                     .fillMaxWidth()
                     .height(200.dp)
                     .padding(24.dp),
-                lineWidth = 2f,
-                lineColors = listOf(
-                    MaterialTheme.colors.primary,
-                    MaterialTheme.colors.error
-                ),
-                fillColor = Color.Green
+                lineWidth = 2f
             )
         }
         ChartType.Line -> {
@@ -79,13 +75,7 @@ fun DrawChart(type: ChartType, list: List<ChartModel>) {
                     .fillMaxWidth()
                     .height(200.dp)
                     .padding(24.dp),
-                lineWidth = 2f,
-                withDots = true,
-                lineColors = listOf(
-                    MaterialTheme.colors.primary,
-                    MaterialTheme.colors.error
-                ),
-                fillColor = Color.Green
+                lineWidth = 2f
             )
         }
         ChartType.Bar -> {
@@ -94,7 +84,8 @@ fun DrawChart(type: ChartType, list: List<ChartModel>) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(24.dp),
-                height = 200.dp
+                height = 200.dp,
+                valueTextColor = MaterialTheme.colors.onBackground.toArgb()
             )
         }
         ChartType.Column -> {
