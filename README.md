@@ -98,13 +98,12 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177401026
 
 #### BarChart
 ```kotlin
-AreaChart(
-    yAxisValues = list.map { it.value },
-    modifier = Modifier
-        .fillMaxWidth()
-        .height(200.dp)
-        .padding(24.dp),
-    lineWidth = 2f
+BarChart(
+chartModels = chartModels,
+modifier = Modifier
+          .fillMaxWidth()
+          .padding(24.dp),
+height = 200.dp
 )
 ```
 
@@ -134,14 +133,12 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177402168
 #### AreaChart
 ```kotlin
 AreaChart(
-    yAxisValues = listOf(10f, 20f, 15f),
+    yAxisValues = list.map { it.value },
     modifier = Modifier
-               .fillMaxWidth()
-                .height(200.dp),
-    spacing = 50f,
-    lineWidth = 2f,
-    fillColor = Color.Green,
-    graphColor = MaterialTheme.colors.primary
+        .fillMaxWidth()
+        .height(200.dp)
+        .padding(24.dp),
+    lineWidth = 2f
 )
 ```
 
