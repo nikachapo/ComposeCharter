@@ -113,7 +113,7 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177401658
 #### LineChart
 ```kotlin
 LineChart(
-    yAxisValues = list.map { it.value },
+    yAxisValues = listOf(10f, 30f, 20f, 50f),
     modifier = Modifier
         .fillMaxWidth()
         .height(200.dp)
@@ -134,7 +134,7 @@ data-canonical-src="https://user-images.githubusercontent.com/44478420/177402168
 #### AreaChart
 ```kotlin
 AreaChart(
-    yAxisValues = list.map { it.value },
+    yAxisValues = listOf(10f, 30f, 20f, 50f),
     modifier = Modifier
         .fillMaxWidth()
         .height(200.dp)
